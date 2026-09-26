@@ -54,32 +54,22 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// ── Register Repositories ──────────────────────────────────────────────────
-// Member 1 - Done
+// Register Repositories
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-
-// Member 2 - Uncomment when CustomerRepository & BranchRepository are added
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IBranchRepository, BranchRepository>();
-
-// Member 3 - Uncomment when AccountRepository & TransactionRepository are added
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 
-// ── Register Business Logic ────────────────────────────────────────────────
-// Member 1 - Done
+// Register Business Logic
 builder.Services.AddScoped<IEmployeeBL, EmployeeBL>();
-builder.Services.AddScoped<IReportBL, ReportBL>();
-
-// Member 2 - Uncomment when CustomerBL & BranchBL are added
 builder.Services.AddScoped<ICustomerBL, CustomerBL>();
 builder.Services.AddScoped<IBranchBL, BranchBL>();
-
-// Member 3 - Uncomment when AccountBL & TransactionBL are added
 builder.Services.AddScoped<IAccountBL, AccountBL>();
 builder.Services.AddScoped<ITransactionBL, TransactionBL>();
+builder.Services.AddScoped<IReportBL, ReportBL>();
 
-// ── Register Services ──────────────────────────────────────────────────────
+// Register Services
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 
 // Add Controllers & API Explorer
