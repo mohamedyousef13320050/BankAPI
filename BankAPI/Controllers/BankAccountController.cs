@@ -7,9 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BankSystem.Controllers
 {
-    /// <summary>
-    /// Employee and Admin operations for managing customer bank accounts (Create, View, Block, Close)
-    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin,Employee")]
@@ -22,9 +19,6 @@ namespace BankSystem.Controllers
             this.accountBL = accountBL;
         }
 
-        /// <summary>
-        /// Get list of all bank accounts.
-        /// </summary>
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -32,10 +26,6 @@ namespace BankSystem.Controllers
             return Ok(accounts);
         }
 
-        /// <summary>
-        /// Get bank account details by ID.
-        /// </summary>
-        /// <param name="id">Account ID</param>
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -44,10 +34,6 @@ namespace BankSystem.Controllers
             return Ok(account);
         }
 
-        /// <summary>
-        /// Create a new bank account for a customer.
-        /// </summary>
-        /// <param name="model">Account creation parameters</param>
         [HttpPost]
         public IActionResult Create([FromBody] AccountCreateVM model)
         {
@@ -68,11 +54,6 @@ namespace BankSystem.Controllers
             return BadRequest(ModelState);
         }
 
-        /// <summary>
-        /// Change account status (Active, Blocked, Closed).
-        /// </summary>
-        /// <param name="id">Account ID</param>
-        /// <param name="status">Target status enum value (Active=1, Blocked=2, Closed=3)</param>
         [HttpPatch("{id}/status")]
         public IActionResult ChangeStatus(int id, [FromQuery] AccountStatus status)
         {

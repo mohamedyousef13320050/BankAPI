@@ -6,9 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BankSystem.Controllers
 {
-    /// <summary>
-    /// Authentication and Identity Operations (Login, Register, JWT Token Generation)
-    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
@@ -27,11 +24,6 @@ namespace BankSystem.Controllers
             this.tokenService = tokenService;
         }
 
-        /// <summary>
-        /// Authenticate user and return a signed JWT Bearer Token with roles and expiration.
-        /// </summary>
-        /// <param name="model">Username/Email and Password credentials</param>
-        /// <returns>JWT Bearer token and user claims</returns>
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginVM model)
         {
@@ -67,11 +59,6 @@ namespace BankSystem.Controllers
             return Unauthorized(new { Message = "Invalid username or password." });
         }
 
-        /// <summary>
-        /// Register a new Customer account.
-        /// </summary>
-        /// <param name="model">Registration details (Username, Email, Password)</param>
-        /// <returns>Registration status and new JWT token</returns>
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterVM model)
         {

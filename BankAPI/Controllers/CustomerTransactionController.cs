@@ -7,9 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BankSystem.Controllers
 {
-    /// <summary>
-    /// Customer self-service transaction operations (View history and Inter-account atomic transfer)
-    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Customer")]
@@ -22,10 +19,6 @@ namespace BankSystem.Controllers
             this.transactionBL = transactionBL;
         }
 
-        /// <summary>
-        /// Get transaction history for an owned bank account.
-        /// </summary>
-        /// <param name="accountId">Account ID</param>
         [HttpGet("history/{accountId}")]
         public IActionResult History(int accountId)
         {
@@ -38,10 +31,6 @@ namespace BankSystem.Controllers
             return Ok(history);
         }
 
-        /// <summary>
-        /// Execute an atomic inter-account transfer using a database transaction (BeginTransaction + Rollback on failure).
-        /// </summary>
-        /// <param name="model">Transfer parameters (FromAccountId, ToAccountId, Amount, Description)</param>
         [HttpPost("transfer")]
         public IActionResult Transfer([FromBody] TransferVM model)
         {

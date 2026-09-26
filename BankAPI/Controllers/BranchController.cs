@@ -6,9 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BankSystem.Controllers
 {
-    /// <summary>
-    /// Admin operations for managing bank branches.
-    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
@@ -21,9 +18,6 @@ namespace BankSystem.Controllers
             this.branchBL = branchBL;
         }
 
-        /// <summary>
-        /// Get list of all bank branches.
-        /// </summary>
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -31,10 +25,6 @@ namespace BankSystem.Controllers
             return Ok(branches);
         }
 
-        /// <summary>
-        /// Get branch details by ID.
-        /// </summary>
-        /// <param name="id">Branch ID</param>
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -43,10 +33,6 @@ namespace BankSystem.Controllers
             return Ok(branch);
         }
 
-        /// <summary>
-        /// Create a new bank branch.
-        /// </summary>
-        /// <param name="model">Branch creation parameters</param>
         [HttpPost]
         public IActionResult Create([FromBody] BranchCreateVM model)
         {
@@ -57,11 +43,6 @@ namespace BankSystem.Controllers
             return Ok(new { Message = "Branch created successfully." });
         }
 
-        /// <summary>
-        /// Update branch details.
-        /// </summary>
-        /// <param name="id">Branch ID</param>
-        /// <param name="model">Branch edit parameters</param>
         [HttpPut("{id}")]
         public IActionResult Edit(int id, [FromBody] BranchEditVM model)
         {
@@ -78,10 +59,6 @@ namespace BankSystem.Controllers
             return BadRequest(new { Message = "Failed to update branch." });
         }
 
-        /// <summary>
-        /// Activate a bank branch.
-        /// </summary>
-        /// <param name="id">Branch ID</param>
         [HttpPatch("{id}/activate")]
         public IActionResult Activate(int id)
         {
@@ -92,10 +69,6 @@ namespace BankSystem.Controllers
             return Ok(new { Message = "Branch activated successfully." });
         }
 
-        /// <summary>
-        /// Deactivate a bank branch.
-        /// </summary>
-        /// <param name="id">Branch ID</param>
         [HttpPatch("{id}/deactivate")]
         public IActionResult Deactivate(int id)
         {

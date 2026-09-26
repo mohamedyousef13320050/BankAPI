@@ -6,9 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BankSystem.Controllers
 {
-    /// <summary>
-    /// Customer self-service operations for viewing owned bank accounts and balances.
-    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Customer")]
@@ -21,9 +18,6 @@ namespace BankSystem.Controllers
             this.accountBL = accountBL;
         }
 
-        /// <summary>
-        /// Get all bank accounts owned by the logged-in customer.
-        /// </summary>
         [HttpGet("my-accounts")]
         public IActionResult GetMyAccounts()
         {
@@ -34,10 +28,6 @@ namespace BankSystem.Controllers
             return Ok(accounts);
         }
 
-        /// <summary>
-        /// Get account details for a specific owned account ID.
-        /// </summary>
-        /// <param name="id">Account ID</param>
         [HttpGet("{id}")]
         public IActionResult GetDetails(int id)
         {

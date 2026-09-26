@@ -6,9 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BankSystem.Controllers
 {
-    /// <summary>
-    /// Employee counter operations for Deposits and Withdrawals.
-    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Employee")]
@@ -21,10 +18,6 @@ namespace BankSystem.Controllers
             this.transactionBL = transactionBL;
         }
 
-        /// <summary>
-        /// Process cash deposit into a active bank account.
-        /// </summary>
-        /// <param name="model">Deposit parameters (AccountId, Amount, Description)</param>
         [HttpPost("deposit")]
         public IActionResult Deposit([FromBody] DepositVM model)
         {
@@ -40,10 +33,6 @@ namespace BankSystem.Controllers
             return BadRequest(new { Message = message });
         }
 
-        /// <summary>
-        /// Process cash withdrawal from an active bank account (verifies non-negative balance constraint).
-        /// </summary>
-        /// <param name="model">Withdrawal parameters (AccountId, Amount, Description)</param>
         [HttpPost("withdraw")]
         public IActionResult Withdraw([FromBody] WithdrawVM model)
         {
