@@ -59,12 +59,12 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
 // Member 2 - Uncomment when CustomerRepository & BranchRepository are added
-//builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
-//builder.Services.AddScoped<IBranchRepository, BranchRepository>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<IBranchRepository, BranchRepository>();
 
 // Member 3 - Uncomment when AccountRepository & TransactionRepository are added
-//builder.Services.AddScoped<IAccountRepository, AccountRepository>();
-//builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
 
 // ── Register Business Logic ────────────────────────────────────────────────
 // Member 1 - Done
@@ -72,12 +72,12 @@ builder.Services.AddScoped<IEmployeeBL, EmployeeBL>();
 builder.Services.AddScoped<IReportBL, ReportBL>();
 
 // Member 2 - Uncomment when CustomerBL & BranchBL are added
-//builder.Services.AddScoped<ICustomerBL, CustomerBL>();
-//builder.Services.AddScoped<IBranchBL, BranchBL>();
+builder.Services.AddScoped<ICustomerBL, CustomerBL>();
+builder.Services.AddScoped<IBranchBL, BranchBL>();
 
 // Member 3 - Uncomment when AccountBL & TransactionBL are added
-//builder.Services.AddScoped<IAccountBL, AccountBL>();
-//builder.Services.AddScoped<ITransactionBL, TransactionBL>();
+builder.Services.AddScoped<IAccountBL, AccountBL>();
+builder.Services.AddScoped<ITransactionBL, TransactionBL>();
 
 // ── Register Services ──────────────────────────────────────────────────────
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
